@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import FormField from '@/components/BaseComponents/FormField.vue'
+import { ref } from 'vue';
+import FileUploadForm from '@/components/ExtendedComponents/FileUploadForm.vue';
 </script>
 
 <template>
   <main>
-    <FormField label-name="Test" field-type="text" />
+    <FileUploadForm />
   </main>
 </template>
