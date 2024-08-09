@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { useConvertStringMessageToArray } from '@/composable/useConvertStringToArray';
-import { useFileRead } from '@/composable/useFileRead';
+import { useConvertStringMessageToArray } from '@/modules/WhatsAppSummarise/composables/useConvertStringToArray';
+import { useFileRead } from '@/modules/WhatsAppSummarise/composables/useFileRead';
 import FormField from '@/components/BaseComponents/FormField.vue';
 import FormButton from '@/components/BaseComponents/FormButton.vue';
-import { Session } from 'inspector';
 
 const nullValue = ref(null);
 const messageArray = ref([] as string[]);

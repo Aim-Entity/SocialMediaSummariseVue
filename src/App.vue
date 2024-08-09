@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
+
+window.onload = function () {
+  sessionStorage.clear();
+};
 </script>
 
 <template>
