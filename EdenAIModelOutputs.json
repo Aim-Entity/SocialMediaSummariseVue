@@ -1,0 +1,34 @@
+[
+  {
+    "InputLength": 200,
+    "OutputLineLength": 13,
+    "Provider": "ChatGPT/OpenAI-4",
+    "result": "Honufa asked the group if they were allowed to go to Bradford the next day, however, their dad told them to go to back bed. Honufa mentioned they did not want to spend a lot of money, possibly because of an upcoming birthday party. Bilal critiqued Honufa's choice of food at Cha Cha Chai, and Honufa defended their choice. There were also several media files shared among the group. Honufa reminisced about some past incident involving someone yelling, and also received a code for a free shower gel from Superdrug.",
+    "status": "success",
+    "cost": 0.04452
+  },
+  {
+    "InputLength": 2600,
+    "OutputLineLength": 13,
+    "Provider": "ChatGPT/OpenAI-4",
+    "result": "The text contains a group chat of a family with a member named Bilal hospitalized. Initially, suffering from nose bleeds, difficulty swallowing, feeling unwell and significant tiredness, Bilal was given morphine and IV hydration to treat dehydration, and was advised to move around to aid circulation. The group chat is full of queries from family members about Bilal's health progress, discussions of visits, planning for discharge, and trivial topics. Bilal is advised to eat high protein food and to wear noise-cancelling headphones to help with sleep. The text ends with Bilal negotiating a sick note from the doctor due to his absence from work.",
+    "status": "success",
+    "cost": 0.35088
+  },
+  {
+    "InputLength": 200,
+    "OutputLineLength": 13,
+    "Provider": "openai/gpt-4o-mini",
+    "result": "Honufa asks if they can go to Bradford for a friend's birthday, but Dad tells them to go back to sleep. Later, Honufa shares some media and comments on food choices and family interactions. The conversation includes playful banter and mentions of family and a free shower gel prize from a game played by Honufa.",
+    "status": "success",
+    "cost": 0.0004008
+  },
+  {
+    "InputLength": 2600,
+    "OutputLineLength": 13,
+    "Provider": "openai/gpt-4o-mini",
+    "result": "In this conversation, Honufa inquires about going to Bradford for a friend's birthday, but their dad advises them to sleep instead. The exchange continues with various family members discussing Bilal's health condition while he is in the hospital, following surgery. Bilal shares updates about his recovery, struggles with swallowing, and pain management. His family provides encouragement and advice, suggesting he eat soft foods and keep moving to aid recovery. They plan to visit him and discuss discharge procedures, medications, and the possibility of obtaining a sick note for Bilal's work. Overall, the dialogue focuses on family support during Bilal's hospital stay and Honufa's social plans.",
+    "status": "success",
+    "cost": 0.0034638
+  }
+]
