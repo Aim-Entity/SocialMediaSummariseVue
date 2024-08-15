@@ -1,4 +1,4 @@
-export function useFileRead(FileList: FileList): void {
+export function FileRead(FileList: FileList): void {
   if (!FileList) {
     new Error('File List Does Not Exist');
   }
