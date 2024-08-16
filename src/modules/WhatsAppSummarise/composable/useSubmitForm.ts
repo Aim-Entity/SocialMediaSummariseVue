@@ -34,20 +34,25 @@ const formValidation = (formFieldValues: formFieldObject): boolean => {
   return validSubmit;
 };
 
-export function useSubmitForm(formFieldValues: formFieldObject): string[] {
+export function useSubmitForm(
+  formFieldValues: formFieldObject,
+  updateWhatsAppArray: Function
+): void {
   const validSubmit: boolean = formValidation(formFieldValues);
-  let messageArray: string[] = [];
   if (validSubmit) {
-    FileRead(formFieldValues.fileValue as FileList);
-    messageArray = ConvertStringMessageToArray(sessionStorage['messageString']) as string[];
-
     sessionStorage.setItem('formDateStart', formFieldValues.dateValue as string);
     sessionStorage.setItem('formTimeStart', formFieldValues.timeValue as string);
 
+    FileRead(formFieldValues.fileValue as FileList);
     SummariseAPICall();
+
+    setTimeout(() => {
+      const messageToArray = ConvertStringMessageToArray(
+        sessionStorage['messageString']
+      ) as string[];
+      updateWhatsAppArray(messageToArray);
+    }, 1000);
   } else {
     alert('Enter All Form Fields');
   }
-
-  return messageArray;
 }

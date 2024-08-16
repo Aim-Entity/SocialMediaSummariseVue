@@ -3,10 +3,15 @@ import { ref } from 'vue';
 import FormField from '@/components/BaseComponents/FormField.vue';
 import FormButton from '@/components/BaseComponents/FormButton.vue';
 import { useSubmitForm } from '@/modules/WhatsAppSummarise/composable/useSubmitForm';
-import process from 'process';
+
+import { useWhatsappStore } from '@/store/WhatsappSummarise/whatsapp';
+import { storeToRefs } from 'pinia';
 
 const nullValue = ref(null);
-const messageArray = ref([] as string[]);
+
+const whatsappStore = useWhatsappStore();
+const { messageArray, messageString, dateRange, timeRange } = storeToRefs(whatsappStore);
+const { updateWhatsAppArray } = whatsappStore;
 
 type formFieldObject = {
   fileValue: FileList | null;
@@ -21,9 +26,7 @@ const formFieldValues = ref<formFieldObject>({
 });
 
 let SubmitForm = (): void => {
-  messageArray.value = useSubmitForm(formFieldValues.value);
-
-  console.log(formFieldValues.value, messageArray.value);
+  useSubmitForm(formFieldValues.value, updateWhatsAppArray);
 };
 
 let updateFileModel = (event: Event) => {
@@ -51,5 +54,9 @@ let updateFileModel = (event: Event) => {
       v-model="formFieldValues.timeValue"
     />
     <FormButton button-label="Submit" />
+
+    <br />
+
+    <p>{{ messageString }}</p>
   </form>
 </template>
