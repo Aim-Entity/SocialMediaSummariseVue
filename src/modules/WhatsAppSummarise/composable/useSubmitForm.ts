@@ -1,6 +1,7 @@
 import { ConvertStringMessageToArray } from '@/modules/WhatsAppSummarise/utils/ConvertStringToArray';
 import { FileRead } from '@/modules/WhatsAppSummarise/utils/FileRead';
 import { SummariseAPICall } from '@/modules/WhatsAppSummarise/utils/SummariseAPICall';
+import type { StoreGeneric } from 'pinia';
 
 type formFieldObject = {
   fileValue: FileList | null;
@@ -34,23 +35,23 @@ const formValidation = (formFieldValues: formFieldObject): boolean => {
   return validSubmit;
 };
 
-export function useSubmitForm(
-  formFieldValues: formFieldObject,
-  updateWhatsAppArray: Function
-): void {
+export function useSubmitForm(formFieldValues: formFieldObject, whatsappStore: StoreGeneric): void {
+  const { updateWhatsAppArray } = whatsappStore;
+
   const validSubmit: boolean = formValidation(formFieldValues);
   if (validSubmit) {
     sessionStorage.setItem('formDateStart', formFieldValues.dateValue as string);
     sessionStorage.setItem('formTimeStart', formFieldValues.timeValue as string);
 
     FileRead(formFieldValues.fileValue as FileList);
-    SummariseAPICall();
 
     setTimeout(() => {
       const messageToArray = ConvertStringMessageToArray(
         sessionStorage['messageString']
       ) as string[];
       updateWhatsAppArray(messageToArray);
+
+      SummariseAPICall(whatsappStore);
     }, 1000);
   } else {
     alert('Enter All Form Fields');

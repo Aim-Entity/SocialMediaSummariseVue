@@ -11,7 +11,6 @@ const nullValue = ref(null);
 
 const whatsappStore = useWhatsappStore();
 const { messageArray, messageString, dateRange, timeRange } = storeToRefs(whatsappStore);
-const { updateWhatsAppArray } = whatsappStore;
 
 type formFieldObject = {
   fileValue: FileList | null;
@@ -26,7 +25,7 @@ const formFieldValues = ref<formFieldObject>({
 });
 
 let SubmitForm = (): void => {
-  useSubmitForm(formFieldValues.value, updateWhatsAppArray);
+  useSubmitForm(formFieldValues.value, whatsappStore);
 };
 
 let updateFileModel = (event: Event) => {
@@ -54,9 +53,8 @@ let updateFileModel = (event: Event) => {
       v-model="formFieldValues.timeValue"
     />
     <FormButton button-label="Submit" />
-
     <br />
 
-    <p>{{ messageString }}</p>
+    <!-- <p>{{ messageString }}</p> -->
   </form>
 </template>
