@@ -12,12 +12,38 @@ const stripDateTime = (text: string): string => {
   return resultText;
 };
 
+const isUselessLine = (text: string): boolean => {
+  if (
+    text.includes('Media omitted') ||
+    text.includes('Messages and calls are end to end encrypted') ||
+    text.includes('No one outside of this chat, not even WhatsApp') ||
+    text.includes('created group "')
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const restrictArrayWithDates = (arr: string[], startDate: Date) => {
+  let index = 0;
+  arr.forEach((line) => {
+    const splitLine: string[] = line.split('-');
+    const lineDate: Date = new Date(splitLine.slice(0, 3).join()); // In the case the text has a -, this insures its included
+    if (startDate >= lineDate || lineDate.toString() == 'Invalid Date') {
+      delete arr[index];
+    }
+    index++;
+  });
+
+  return arr;
+};
+
 export const useWhatsappStore = defineStore('whatsapp', {
   state: () => ({
     messageArray: [] as string[],
     messageString: '' as string,
-    dateRange: '',
-    timeRange: '',
+    startDateTime: new Date(),
     summarizedText: ''
   }),
   getters: {
@@ -25,20 +51,24 @@ export const useWhatsappStore = defineStore('whatsapp', {
   },
   actions: {
     updateWhatsAppArray(array: string[]) {
-      this.messageArray = array;
+      this.messageArray = restrictArrayWithDates(array, this.startDateTime);
       this.updateWhatsAppString();
     },
     updateWhatsAppString() {
       let message: string = '';
       this.messageArray.forEach((line) => {
-        message = message + stripDateTime(line) + '\n';
+        if (isUselessLine(line) == false) {
+          message = message + stripDateTime(line) + '\n';
+        }
       });
 
-      console.log(message);
       this.messageString = message;
     },
     updateSummarizedText(text: string) {
       this.summarizedText = text;
+    },
+    updateStartDateTime(date: string, time: string) {
+      this.startDateTime = new Date(`${date} ${time}`);
     }
   }
 });

@@ -10,7 +10,8 @@ import { storeToRefs } from 'pinia';
 const nullValue = ref(null);
 
 const whatsappStore = useWhatsappStore();
-const { messageArray, messageString, dateRange, timeRange } = storeToRefs(whatsappStore);
+const { messageArray, messageString, startDateTime } = storeToRefs(whatsappStore);
+const { updateStartDateTime } = whatsappStore;
 
 type formFieldObject = {
   fileValue: FileList | null;
@@ -26,6 +27,10 @@ const formFieldValues = ref<formFieldObject>({
 
 let SubmitForm = (): void => {
   useSubmitForm(formFieldValues.value, whatsappStore);
+  updateStartDateTime(
+    formFieldValues.value.dateValue as string,
+    formFieldValues.value.timeValue as string
+  );
 };
 
 let updateFileModel = (event: Event) => {
@@ -55,6 +60,7 @@ let updateFileModel = (event: Event) => {
     <FormButton button-label="Submit" />
     <br />
 
-    <!-- <p>{{ messageString }}</p> -->
+    <p>{{ formFieldValues.dateValue }}</p>
+    <p>{{ formFieldValues.timeValue }}</p>
   </form>
 </template>
