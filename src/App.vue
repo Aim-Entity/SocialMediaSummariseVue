@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
-import TopNav from '@/components/ExtendedComponents/navigation/TopNav.vue';
+import Navigation from '@/components/ExtendedComponents/navigation/Navigation.vue';
 
 window.onload = function () {
   sessionStorage.clear();
@@ -8,8 +8,10 @@ window.onload = function () {
 </script>
 
 <template>
-  <TopNav />
-  <RouterView />
+  <div class="mx-auto">
+    <Navigation />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped></style>
