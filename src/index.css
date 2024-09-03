@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-color-reg {
+    color: #495057;
+  }
+  .text-color-mute {
+    color: #6d7080;
+  }
+  .text-style-bold {
+    font-weight: 600;
+  }
+  .default-page-padding {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+}
