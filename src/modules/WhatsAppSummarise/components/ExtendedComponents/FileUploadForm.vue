@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import FormField from '@/components/BaseComponents/FormField.vue';
-import FormButton from '@/components/BaseComponents/FormButton.vue';
 import { useSubmitForm } from '@/modules/WhatsAppSummarise/composable/useSubmitForm';
 
 import { useWhatsappStore } from '@/store/WhatsappSummarise/whatsapp';
@@ -48,7 +47,7 @@ let updateFileModel = (event: Event) => {
         v-model:model-value="nullValue"
         :file-func="updateFileModel"
       />
-      <div class="flex justify-between mt-5">
+      <div class="flex justify-between mt-8">
         <FormField
           label-name="Select Date"
           field-type="date"
@@ -57,7 +56,7 @@ let updateFileModel = (event: Event) => {
         />
         <FormField label-name="Select Time" field-type="time" v-model="formFieldValues.timeValue" />
       </div>
-      <FormButton button-label="Submit" />
+
       <br />
 
       <p>{{ formFieldValues.dateValue }}</p>

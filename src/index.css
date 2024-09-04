@@ -27,4 +27,12 @@
     border: 1px solid #ced4da;
     border-radius: 2px;
   }
+
+  .button-bg-success-green {
+    background: #00bd9d;
+    opacity: 0.1;
+  }
+  .button-text-success-green {
+    color: #00bd9d;
+  }
 }
