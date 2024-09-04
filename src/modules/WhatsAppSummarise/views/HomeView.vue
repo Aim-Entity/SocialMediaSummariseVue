@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import FileUploadForm from '@/modules/WhatsAppSummarise/components/ExtendedComponents/FileUploadForm.vue';
+import WhatsAppBody from '@/modules/WhatsAppSummarise/components/ExtendedComponents/WhatsAppBody.vue';
 </script>
 
 <template>
-  <main>
-    <FileUploadForm />
+  <main class="mt-11 default-page-padding">
+    <WhatsAppBody />
   </main>
 </template>

@@ -19,4 +19,12 @@
     padding-left: 7rem;
     padding-right: 7rem;
   }
+  .component-border {
+    border: 1px solid #e9ebec;
+    border-radius: 2px;
+  }
+  .field-border {
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+  }
 }

@@ -40,27 +40,28 @@ let updateFileModel = (event: Event) => {
 </script>
 
 <template>
-  <form @submit.prevent="SubmitForm">
-    <FormField
-      label-name="File"
-      :is-file-input="true"
-      v-model:model-value="nullValue"
-      :file-func="updateFileModel"
-    />
-    <FormField
-      label-name="Date To Analyse Messages From"
-      field-type="date"
-      v-model="formFieldValues.dateValue"
-    />
-    <FormField
-      label-name="Time To Analyse Messages From"
-      field-type="time"
-      v-model="formFieldValues.timeValue"
-    />
-    <FormButton button-label="Submit" />
-    <br />
+  <div>
+    <form @submit.prevent="SubmitForm">
+      <FormField
+        label-name="Drop File Or Click To Upload"
+        :is-file-input="true"
+        v-model:model-value="nullValue"
+        :file-func="updateFileModel"
+      />
+      <div class="flex justify-between mt-5">
+        <FormField
+          label-name="Select Date"
+          field-type="date"
+          v-model="formFieldValues.dateValue"
+          :formal-date-formatting="true"
+        />
+        <FormField label-name="Select Time" field-type="time" v-model="formFieldValues.timeValue" />
+      </div>
+      <FormButton button-label="Submit" />
+      <br />
 
-    <p>{{ formFieldValues.dateValue }}</p>
-    <p>{{ formFieldValues.timeValue }}</p>
-  </form>
+      <p>{{ formFieldValues.dateValue }}</p>
+      <p>{{ formFieldValues.timeValue }}</p>
+    </form>
+  </div>
 </template>
