@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import FormField from '@/components/BaseComponents/FormField.vue';
+import FileFormField from '@/components/BaseComponents/FileFormField.vue';
+import DateFormField from '@/components/BaseComponents/DateFormField.vue';
+import TimeFormField from '@/components/BaseComponents/TimeFormField.vue';
+
 import { useUpdateSessionData } from '@/modules/WhatsAppSummarise/composable/useUpdateSessionData';
 import { useSubmitForm } from '@/modules/WhatsAppSummarise/composable/useSubmitForm';
 import { SummariseAPICall } from '@/modules/WhatsAppSummarise/utils/SummariseAPICall';
-import { FileRead } from '@/modules/WhatsAppSummarise/utils/FileRead';
+import { GetTodaysDateAsString } from '@/modules/WhatsAppSummarise/utils/GetTodaysDateAsString';
+import { GetTodaysTimeAsString } from '@/modules/WhatsAppSummarise/utils/GetTodaysTimeAsString';
 
 import { useWhatsappStore } from '@/store/WhatsappSummarise/whatsapp';
 import { storeToRefs } from 'pinia';
@@ -49,28 +53,26 @@ let formFieldUpdated = () => {
 <template>
   <div>
     <form @submit.prevent="SubmitForm" id="WhatsappForm">
-      <FormField
+      <FileFormField
         label-name="Drop File Or Click To Upload"
-        :is-file-input="true"
         v-model:model-value="nullValue"
         :file-func="updateFileModel"
         @change="formFieldUpdated()"
       />
       <div class="flex justify-between mt-8 max-lg:block">
-        <FormField
+        <DateFormField
           label-name="Select Date"
-          field-type="date"
           v-model="formFieldValues.dateValue"
-          :formal-date-formatting="true"
           class="w-80 max-lg:w-full"
           @change="formFieldUpdated()"
+          :max-date="GetTodaysDateAsString()"
         />
-        <FormField
+        <TimeFormField
           label-name="Select Time"
-          field-type="time"
           v-model="formFieldValues.timeValue"
           class="w-80 max-lg:w-full max-lg:mt-4"
           @change="formFieldUpdated()"
+          :max-time="GetTodaysTimeAsString()"
         />
       </div>
 
