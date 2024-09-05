@@ -5,6 +5,7 @@ withDefaults(
   defineProps<{
     buttonLabel?: string;
     customStyling?: string;
+    formId?: string;
   }>(),
   {
     buttonLabel: 'Submit',
@@ -15,7 +16,10 @@ withDefaults(
 </script>
 
 <template>
-  <button :class="customStyling" type="submit">
+  <button v-if="formId" :class="customStyling" type="submit" :form="formId">
+    {{ buttonLabel }}
+  </button>
+  <button v-else :class="customStyling" type="submit">
     {{ buttonLabel }}
   </button>
 </template>

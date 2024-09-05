@@ -38,7 +38,7 @@ const proxyValue = computed({
       <input
         :type="fieldType"
         v-model="proxyValue"
-        class="field-border h-10 w-80 px-3 text-color-reg"
+        class="field-border h-10 w-full px-3 text-color-reg"
       />
     </div>
 

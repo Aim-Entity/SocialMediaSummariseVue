@@ -44,7 +44,13 @@ export const useWhatsappStore = defineStore('whatsapp', {
     messageArray: [] as string[],
     messageString: '' as string,
     startDateTime: new Date(),
-    summarizedText: ''
+    summarizedText: '',
+    hasFileUploaded: false,
+    fileDataSize: -0.1,
+    fileWordLength: -1,
+    fileCharLength: -1,
+    startDateUI: '',
+    startTimeUI: ''
   }),
   getters: {
     getMessageString: (state) => state.messageString as string
@@ -53,6 +59,24 @@ export const useWhatsappStore = defineStore('whatsapp', {
     updateWhatsAppArray(array: string[]) {
       this.messageArray = restrictArrayWithDates(array, this.startDateTime);
       this.updateWhatsAppString();
+    },
+    updateHasFileUploaded(state: boolean) {
+      this.hasFileUploaded = state;
+    },
+    updateFileDataSize(size: number) {
+      this.fileDataSize = size;
+    },
+    updateFileWordLength(length: number) {
+      this.fileWordLength = length;
+    },
+    updateFileCharLength(length: number) {
+      this.fileCharLength = length;
+    },
+    updateStartDateUI(date: string) {
+      this.startDateUI = date;
+    },
+    updateStartTimeUI(time: string) {
+      this.startTimeUI = time;
     },
     updateWhatsAppString() {
       let message: string = '';

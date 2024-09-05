@@ -19,8 +19,9 @@ import OverviewTextDescription from '@/modules/WhatsAppSummarise/components/Base
 
       <div class="mt-4 w-full h-10 border">
         <FormButton
+          form-id="WhatsappForm"
           button-label="Summarise"
-          custom-styling="h-10 w-full rounded flex justify-center items-center bg-gray-200 text-gray-500 transition-all ease-in duration-200 cursor-not-allowed text-base"
+          custom-styling="h-10 w-full rounded flex justify-center items-center bg-gray-200 text-gray-500 transition-all ease-in duration-200  text-base"
         />
       </div>
     </div>

@@ -6,8 +6,6 @@ import type { StoreGeneric } from 'pinia';
 export function SummariseAPICall(whatsappStore: StoreGeneric): void {
   const { getMessageString } = storeToRefs(whatsappStore);
 
-  console.log(getMessageString.value);
-
   if (getMessageString.value == '' || getMessageString.value == null) {
     alert('No Messages Found. Please Check Uploaded File & Date/Time Fields.');
   } else {
