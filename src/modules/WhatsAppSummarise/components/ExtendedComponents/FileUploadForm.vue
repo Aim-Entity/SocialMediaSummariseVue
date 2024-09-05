@@ -16,8 +16,8 @@ import { storeToRefs } from 'pinia';
 const nullValue = ref(null);
 
 const whatsappStore = useWhatsappStore();
-const { messageArray, messageString, startDateTime } = storeToRefs(whatsappStore);
-const { updateStartDateTime } = whatsappStore;
+const { messageArray, messageString, startDateTime, hasFileUploaded } = storeToRefs(whatsappStore);
+const { updateStartDateTime, updateFiles } = whatsappStore;
 
 type formFieldObject = {
   fileValue: FileList | null;
@@ -43,6 +43,9 @@ let SubmitForm = (): void => {
 let updateFileModel = (event: Event) => {
   const files = (event.target as HTMLInputElement).files;
   formFieldValues.value.fileValue = files;
+  if (formFieldValues.value.fileValue) {
+    updateFiles(formFieldValues.value.fileValue[0]);
+  }
 };
 
 let formFieldUpdated = () => {
@@ -58,6 +61,7 @@ let formFieldUpdated = () => {
         v-model:model-value="nullValue"
         :file-func="updateFileModel"
         @change="formFieldUpdated()"
+        field-id="whatsAppFileField"
       />
       <div class="flex justify-between mt-8 max-lg:block">
         <DateFormField

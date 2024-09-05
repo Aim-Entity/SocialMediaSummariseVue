@@ -6,6 +6,7 @@ const props = withDefaults(
     labelName: string;
     modelValue: string | null;
     fileFunc?: any;
+    fieldId?: string;
   }>(),
   {}
 );
@@ -25,7 +26,8 @@ const proxyValue = computed({
 <template>
   <div>
     <label class="upload-border h-72 flex flex-col items-center justify-center cursor-pointer">
-      <input type="file" @change="fileFunc" class="hidden" />
+      <input type="file" @change="fileFunc" class="hidden" v-if="fieldId" :id="fieldId" />
+      <input type="file" @change="fileFunc" class="hidden" v-else />
       <div class="flex flex-col items-center justify-center gap-1">
         <img src="@/assets/icons/upload.svg" alt="Upload Icon" />
 

@@ -46,11 +46,11 @@ export const useWhatsappStore = defineStore('whatsapp', {
     startDateTime: new Date(),
     summarizedText: '',
     hasFileUploaded: false,
-    fileDataSize: -0.1,
     fileWordLength: -1,
     fileCharLength: -1,
     startDateUI: '',
-    startTimeUI: ''
+    startTimeUI: '',
+    fileObject: new File([], '')
   }),
   getters: {
     getMessageString: (state) => state.messageString as string
@@ -63,8 +63,8 @@ export const useWhatsappStore = defineStore('whatsapp', {
     updateHasFileUploaded(state: boolean) {
       this.hasFileUploaded = state;
     },
-    updateFileDataSize(size: number) {
-      this.fileDataSize = size;
+    updateFiles(file: File) {
+      this.fileObject = file;
     },
     updateFileWordLength(length: number) {
       this.fileWordLength = length;
@@ -93,6 +93,20 @@ export const useWhatsappStore = defineStore('whatsapp', {
     },
     updateStartDateTime(date: string, time: string) {
       this.startDateTime = new Date(`${date} ${time}`);
+    },
+    resetFileData() {
+      this.messageArray = [] as string[];
+      this.messageString = '' as string;
+      this.summarizedText = '';
+      this.hasFileUploaded = false;
+      this.fileWordLength = -1;
+      this.fileCharLength = -1;
+      this.fileObject = new File([], '');
+
+      const fileElement: HTMLInputElement | null = document.querySelector('#whatsAppFileField');
+      if (fileElement) {
+        fileElement.value = '';
+      }
     }
   }
 });
