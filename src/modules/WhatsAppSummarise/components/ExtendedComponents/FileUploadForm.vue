@@ -62,6 +62,21 @@ let formFieldUpdated = () => {
         :file-func="updateFileModel"
         @change="formFieldUpdated()"
         field-id="whatsAppFileField"
+        :borderClass="
+          hasFileUploaded
+            ? 'upload-border-success group-hover/file:border-[#2C916E] transition ease-in duration-200'
+            : ''
+        "
+        :labelClass="
+          hasFileUploaded
+            ? 'upload-text-color-success group-hover/file:text-[#2C916E] transition ease-in duration-200'
+            : ''
+        "
+        :uploadClass="
+          hasFileUploaded
+            ? 'upload-logo-success group-hover/file:fill-[#2C916E] transition ease-in duration-200'
+            : ''
+        "
       />
       <div class="flex justify-between mt-8 max-lg:block">
         <DateFormField

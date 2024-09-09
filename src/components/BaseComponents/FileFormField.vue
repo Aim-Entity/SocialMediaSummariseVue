@@ -7,9 +7,43 @@ const props = withDefaults(
     modelValue: string | null;
     fileFunc?: any;
     fieldId?: string;
+    borderClass?: string;
+    labelClass?: string;
+    uploadClass?: string;
   }>(),
-  {}
+  {
+    borderClass: 'upload-border group-hover/file:border-slate-600 transition ease-in duration-200',
+    labelClass: 'upload-text-color group-hover/file:text-slate-600 transition ease-in duration-200',
+    uploadClass: 'upload-logo group-hover/file:fill-slate-600 transition ease-in duration-200'
+  }
 );
+
+const defaultBorderClass = computed(() => {
+  if (props.borderClass == '') {
+    return 'upload-border group-hover/file:border-slate-600 transition ease-in duration-200';
+  } else {
+    let style: string = props.borderClass;
+    return style;
+  }
+});
+
+const defaultLabelClass = computed(() => {
+  if (props.borderClass == '') {
+    return 'upload-text-color group-hover/file:text-slate-600 transition ease-in duration-200';
+  } else {
+    let style: string = props.labelClass;
+    return style;
+  }
+});
+
+const defaultUploadClass = computed(() => {
+  if (props.borderClass == '') {
+    return 'upload-logo group-hover/file:fill-slate-600 transition ease-in duration-200';
+  } else {
+    let style: string = props.uploadClass;
+    return style;
+  }
+});
 
 const emit = defineEmits(['update:modelValue', 'update-file-model']);
 
@@ -24,14 +58,29 @@ const proxyValue = computed({
 </script>
 
 <template>
-  <div>
-    <label class="upload-border h-72 flex flex-col items-center justify-center cursor-pointer">
+  <div class="group/file">
+    <label
+      :class="`h-72 flex flex-col items-center justify-center cursor-pointer ${defaultBorderClass}`"
+    >
       <input type="file" @change="fileFunc" class="hidden" v-if="fieldId" :id="fieldId" />
       <input type="file" @change="fileFunc" class="hidden" v-else />
       <div class="flex flex-col items-center justify-center gap-1">
-        <img src="@/assets/icons/upload.svg" alt="Upload Icon" />
+        <svg
+          width="66"
+          height="66"
+          viewBox="0 0 66 66"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M51.5701 57.0116H40.9027H38.0302H37.4099V42.7031H42.0895C43.2763 42.7031 43.9775 41.3545 43.2763 40.3835L34.1733 27.7877C33.5934 26.9785 32.3931 26.9785 31.8132 27.7877L22.7103 40.3835C22.009 41.3545 22.6968 42.7031 23.897 42.7031H28.5766V57.0116H27.9563H25.0838H12.7172C5.63711 56.6205 0 49.999 0 42.8245C0 37.8751 2.68369 33.5597 6.66204 31.2266C6.29792 30.2421 6.10911 29.1902 6.10911 28.0844C6.10911 23.0272 10.1953 18.9409 15.2526 18.9409C16.3449 18.9409 17.3968 19.1297 18.3813 19.4939C21.3077 13.2903 27.6191 8.98834 34.9555 8.98834C44.4495 9.00183 52.2714 16.2707 53.1614 25.5355C60.4573 26.7897 66 33.5462 66 41.1927C66 49.3651 59.6347 56.4452 51.5701 57.0116Z"
+            :class="defaultUploadClass"
+          />
+        </svg>
 
-        <h3 class="text-style-bold text-2xl upload-text-color">{{ labelName }}</h3>
+        <h3 :class="`text-style-bold text-2xl ${defaultLabelClass}`">
+          {{ labelName }}
+        </h3>
       </div>
     </label>
   </div>
@@ -42,7 +91,27 @@ const proxyValue = computed({
   border: 4px dashed #6d7080;
   border-radius: 2px;
 }
+.upload-border-success {
+  border: 4px dashed #43ac87;
+  border-radius: 2px;
+}
 .upload-text-color {
   color: #6d7080;
+}
+.upload-text-color-success {
+  color: #43ac87;
+}
+.upload-border-hover {
+  border: 4px dashed #2d44c4;
+  border-radius: 2px;
+}
+.upload-text-color-hover {
+  color: #4b4d58;
+}
+.upload-logo {
+  fill: #6d7080;
+}
+.upload-logo-success {
+  fill: #43ac87;
 }
 </style>
