@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import FormButton from '@/components/BaseComponents/FormButton.vue';
 import OverviewTextDescription from '@/modules/WhatsAppSummarise/components/BaseComponents/OverviewTextDescription.vue';
 
@@ -7,7 +7,15 @@ import { useWhatsappStore } from '@/store/WhatsappSummarise/whatsapp';
 import { storeToRefs } from 'pinia';
 
 const whatsappStore = useWhatsappStore();
-const { hasFileUploaded } = storeToRefs(whatsappStore);
+const { hasFileUploaded, fileReadyToScan } = storeToRefs(whatsappStore);
+
+let customButtonStyling = computed(() => {
+  if (fileReadyToScan.value == true) {
+    return 'h-10 w-full rounded flex justify-center items-center bg-[#E6F9F6] text-[#00BD9D] hover:bg-teal-100 transition-all ease-in duration-200 cursor-pointer text-base';
+  } else {
+    return 'h-10 w-full rounded flex justify-center items-center bg-gray-200 text-gray-500 transition-all ease-in duration-200 cursor-not-allowed text-base';
+  }
+});
 </script>
 
 <template>
@@ -31,7 +39,7 @@ const { hasFileUploaded } = storeToRefs(whatsappStore);
         <FormButton
           form-id="WhatsappForm"
           button-label="Summarise"
-          custom-styling="h-10 w-full rounded flex justify-center items-center bg-gray-200 text-gray-500 transition-all ease-in duration-200  text-base"
+          :custom-styling="customButtonStyling"
         />
       </div>
     </div>

@@ -16,8 +16,9 @@ import { storeToRefs } from 'pinia';
 const nullValue = ref(null);
 
 const whatsappStore = useWhatsappStore();
-const { messageArray, messageString, startDateTime, hasFileUploaded } = storeToRefs(whatsappStore);
-const { updateStartDateTime, updateFiles } = whatsappStore;
+const { hasFileUploaded } = storeToRefs(whatsappStore);
+const { updateStartDateTime, updateFiles, updateFileReadyToScan, checkIfFileReadyToScan } =
+  whatsappStore;
 
 type formFieldObject = {
   fileValue: FileList | null;
@@ -50,6 +51,7 @@ let updateFileModel = (event: Event) => {
 
 let formFieldUpdated = () => {
   useUpdateSessionData(formFieldValues.value, whatsappStore);
+  checkIfFileReadyToScan();
 };
 </script>
 
@@ -96,9 +98,6 @@ let formFieldUpdated = () => {
       </div>
 
       <br />
-
-      <p>{{ formFieldValues.dateValue }}</p>
-      <p>{{ formFieldValues.timeValue }}</p>
     </form>
   </div>
 </template>

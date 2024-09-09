@@ -10,7 +10,7 @@ withDefaults(
   {
     buttonLabel: 'Submit',
     customStyling:
-      'h-10 w-full border-r-4 border-none flex justify-center items-center bg-gray-200 text-gray-500 hover:bg-gray-300 transition-all ease-in duration-200 cursor-pointer text-base'
+      'h-10 w-full border-none flex justify-center items-center bg-gray-200 text-gray-500 hover:bg-gray-300 transition-all ease-in duration-200 cursor-pointer text-base'
   }
 );
 </script>

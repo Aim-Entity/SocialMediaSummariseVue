@@ -39,6 +39,11 @@ const restrictArrayWithDates = (arr: string[], startDate: Date) => {
   return arr;
 };
 
+const TimeNow = () => {
+  const time = new Date();
+  return time.toLocaleTimeString().slice(0, 5);
+};
+
 export const useWhatsappStore = defineStore('whatsapp', {
   state: () => ({
     messageArray: [] as string[],
@@ -50,7 +55,8 @@ export const useWhatsappStore = defineStore('whatsapp', {
     fileCharLength: -1,
     startDateUI: '',
     startTimeUI: '',
-    fileObject: new File([], '')
+    fileObject: new File([], ''),
+    fileReadyToScan: false
   }),
   getters: {
     getMessageString: (state) => state.messageString as string
@@ -62,6 +68,9 @@ export const useWhatsappStore = defineStore('whatsapp', {
     },
     updateHasFileUploaded(state: boolean) {
       this.hasFileUploaded = state;
+    },
+    updateFileReadyToScan(state: boolean) {
+      this.fileReadyToScan = state;
     },
     updateFiles(file: File) {
       this.fileObject = file;
@@ -106,6 +115,26 @@ export const useWhatsappStore = defineStore('whatsapp', {
       const fileElement: HTMLInputElement | null = document.querySelector('#whatsAppFileField');
       if (fileElement) {
         fileElement.value = '';
+      }
+
+      this.checkIfFileReadyToScan();
+    },
+    checkIfFileReadyToScan() {
+      let ready: boolean = true;
+      if (this.hasFileUploaded == false) {
+        ready = false;
+      }
+      if (this.startDateUI == '' || this.startDateUI == null) {
+        ready = false;
+      }
+      if (this.startTimeUI == '' || this.startTimeUI == null) {
+        ready = false;
+      }
+
+      if (ready) {
+        this.fileReadyToScan = true;
+      } else {
+        this.fileReadyToScan = false;
       }
     }
   }
