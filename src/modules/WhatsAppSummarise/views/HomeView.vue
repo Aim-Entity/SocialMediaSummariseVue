@@ -4,7 +4,7 @@ import WhatsAppBody from '@/modules/WhatsAppSummarise/components/ExtendedCompone
 </script>
 
 <template>
-  <main class="mt-11 default-page-padding">
+  <main class="mt-11 mb-11 default-page-padding max-sm:default-page-padding-mobile">
     <WhatsAppBody />
   </main>
 </template>

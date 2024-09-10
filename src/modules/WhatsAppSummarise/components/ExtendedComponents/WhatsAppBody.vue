@@ -5,17 +5,10 @@ import OverviewComponent from '@/modules/WhatsAppSummarise/components/ExtendedCo
 </script>
 
 <template>
-  <div class="bodyGridTemplate">
+  <div class="max-[1280px]:bodyGridTemplate-tablet max-[960px]:block bodyGridTemplate">
     <ScanComponent />
-    <OverviewComponent />
+    <OverviewComponent class="max-[960px]:mt-4" />
   </div>
 </template>
 
-<style scoped>
-.bodyGridTemplate {
-  display: grid;
-  grid-template-columns: 5fr 2fr;
-  grid-template-rows: 1fr;
-  gap: 1.5rem;
-}
-</style>
+<style scoped></style>

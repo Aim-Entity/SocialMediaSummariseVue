@@ -19,6 +19,10 @@
     padding-left: 7rem;
     padding-right: 7rem;
   }
+  .default-page-padding-mobile {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
   .component-border {
     border: 1px solid #e9ebec;
     border-radius: 2px;
@@ -34,5 +38,19 @@
   }
   .button-text-success-green {
     color: #00bd9d;
+  }
+
+  /* Responsive Global Classes */
+  .bodyGridTemplate {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 1.5rem;
+  }
+  .bodyGridTemplate-tablet {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 1fr;
+    gap: 1.5rem;
   }
 }

@@ -80,18 +80,18 @@ let formFieldUpdated = () => {
             : ''
         "
       />
-      <div class="flex justify-between mt-8 max-lg:block">
+      <div class="flex justify-between mt-8 max-xl:block">
         <DateFormField
           label-name="Select Date"
           v-model="formFieldValues.dateValue"
-          class="w-80 max-lg:w-full"
+          class="w-80 max-[1280px]:w-full"
           @change="formFieldUpdated()"
           :max-date="GetTodaysDateAsString()"
         />
         <TimeFormField
           label-name="Select Time"
           v-model="formFieldValues.timeValue"
-          class="w-80 max-lg:w-full max-lg:mt-4"
+          class="w-80 max-[1280px]:w-full max-lg:mt-4"
           @change="formFieldUpdated()"
           :max-time="GetTodaysTimeAsString()"
         />

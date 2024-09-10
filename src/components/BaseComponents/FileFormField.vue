@@ -78,7 +78,9 @@ const proxyValue = computed({
           />
         </svg>
 
-        <h3 :class="`text-style-bold text-2xl ${defaultLabelClass}`">
+        <h3
+          :class="`text-style-bold text-center transition-all duration-200 text-2xl max-sm:text-lg ${defaultLabelClass}`"
+        >
           {{ labelName }}
         </h3>
       </div>

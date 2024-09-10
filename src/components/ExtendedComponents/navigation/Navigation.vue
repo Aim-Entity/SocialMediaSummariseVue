@@ -5,6 +5,8 @@ import TopNav from '@/components/ExtendedComponents/navigation/TopNav.vue';
 </script>
 
 <template>
-  <TopNav />
-  <BottomNav />
+  <div>
+    <TopNav />
+    <BottomNav />
+  </div>
 </template>

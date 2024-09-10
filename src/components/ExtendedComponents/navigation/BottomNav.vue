@@ -10,8 +10,16 @@ import type { link } from 'fs';
 </script>
 
 <template>
-  <div class="default-page-padding h-12 shadow-md w-full flex justify-between">
-    <div class="flex items-center gap-8">
+  <div
+    class="default-page-padding max-sm:default-page-padding-mobile h-12 shadow-md w-full flex justify-between"
+  >
+    <img
+      src="@/assets/icons/hamburger-temp.svg"
+      alt=""
+      class="w-8 cursor-pointer hidden max-sm:block"
+    />
+
+    <div class="flex items-center gap-8 max-sm:hidden">
       <NavLinkList
         list-title="Dashboards"
         :list-icon-src="dashboardIconMute"
@@ -34,7 +42,7 @@ import type { link } from 'fs';
       />
     </div>
 
-    <div class="flex items-center gap-2 cursor-pointer">
+    <div class="flex items-center gap-2 cursor-pointer max-sm:hidden">
       <img src="@/assets/icons/logout.svg" alt="" class="w-5" />
       <p class="text-color-mute">Logout</p>
     </div>
